@@ -183,17 +183,7 @@
             }
         
         },
-        // watch:{
-        //     checkedIndex(){
-        //         this.addrList.forEach((addr, index) => {
-        //                 if (addr.isDefault) {
-        //                     this.checkedIndex = index;
-        //                 }
-        //             })
-        //             return this.checkedIndex;
-        //     }
-        // },
-        //初始化列表
+       
         methods: {
             init() {
                 this.axios.get('json/address.json').then((response) => {
