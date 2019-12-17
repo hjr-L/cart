@@ -66,7 +66,7 @@
                     <div class="addr-list-wrap">
                         <div class="addr-list">
                             <ul>
-                                <li :class="{'check':addr.isDefault}" v-for="(addr,index) of addrCountFilter"
+                                <li :class="{'check':index==checkedIndex}" v-for="(addr,index) of addrCountFilter"
                                     @click="checkedIndex=index">
                                     <dl>
                                         <dt>{{addr.userName}}</dt>
@@ -81,7 +81,7 @@
                                             </svg>
                                         </a>
                                     </div>
-                                    <div class=" addr-set-default addr-opration" v-if="!addr.isDefault">
+                                    <div class="addr-set-default  addr-opration"  v-if="!addr.isDefault">
                                         <a href="javascript:;" class="addr-set-default-btn"
                                             @click="setDefault(addr.addressId)"><i>设为默认</i></a>
                                     </div>
@@ -180,6 +180,7 @@
         computed: {
             addrCountFilter() {
                 return this.addrList.slice(0, this.limit);
+
             }
         
         },
@@ -197,6 +198,7 @@
                     
                 })
 
+
             },
             showAll() {
                 if (this.limit == 3) {
@@ -204,7 +206,6 @@
                 } else {
                     this.limit = 3;
                 }
-                // console.log(this.limit)
 
             },
             setDefault(addressId) {
@@ -241,6 +242,8 @@
                     list.isDefault=true;
                 }
                 this.addrList.unshift(list);
+                // console.log(this.addrList[1])
+
             }
         }
 
